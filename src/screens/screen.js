@@ -1,11 +1,13 @@
 import * as React from 'react';
-import {View, Text, FlatList, StyleSheet, SafeAreaView} from 'react-native';
+import { View, Text, FlatList, StyleSheet, SafeAreaView } from 'react-native';
 import Service from '../networking/service';
-import {endpoints} from '../networking/urls';
+import { endpoints } from '../networking/urls';
+import observable$ from '../rxjs/seviec';
 
 const ListView = () => {
   React.useEffect(() => {
     getListApi();
+    subscription();
   }, []);
 
   const [listdata, setListData] = React.useState([]);
@@ -22,13 +24,24 @@ const ListView = () => {
       console.log(error);
     }
   };
-  const Item = ({item}) => (
-    <View style={styles.item}>
-      <Text style={styles.title}>user Id : {item.userId}</Text>
-      <Text style={styles.title}>Title : {item.title}</Text>
-    </View>
-  );
-  const renderItem = ({item}) => <Item item={item} />;
+
+  const subscription = () => {
+    observable$.subscribe({
+      next: data => console.log('[data] => ', data),
+      complete: data => console.log('[complete]'),
+    })
+  };
+
+
+  function Item({ item }) {
+    return (
+      <View style={styles.item}>
+        <Text style={styles.title}>user Id : {item.userId}</Text>
+        <Text style={styles.title}>Title : {item.title}</Text>
+      </View>
+    );
+  }
+  const renderItem = ({ item }) => <Item item={item} />;
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
