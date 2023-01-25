@@ -3,7 +3,7 @@ import { View, Text, FlatList, StyleSheet, SafeAreaView } from 'react-native';
 import Service from '../networking/service';
 import { endpoints } from '../networking/urls';
 import observable$ from '../rxjs/seviec';
-
+import App from './drag';
 const ListView = () => {
   React.useEffect(() => {
     getListApi();
@@ -44,6 +44,7 @@ const ListView = () => {
   const renderItem = ({ item }) => <Item item={item} />;
   return (
     <SafeAreaView style={styles.container}>
+      <App/>
       <FlatList
         data={listdata}
         renderItem={renderItem}
