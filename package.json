@@ -46,6 +46,12 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn build && yarn test"
+    }
+  },
   "plugins": [
     "react",
     "@typescript-eslint"

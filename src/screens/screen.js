@@ -5,7 +5,7 @@ import { endpoints } from '../networking/urls';
 import observable$ from '../rxjs/seviec';
 import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin';
 
-import App from './drag';
+// import App from './drag';
 const ListView = () => {
   React.useEffect(() => {
     getListApi();
@@ -93,7 +93,7 @@ const ListView = () => {
           </Text>
         </View>
       </TouchableOpacity>
-      <App/>
+      {/* <App/> */}
       <FlatList
         data={listdata}
         renderItem={renderItem}

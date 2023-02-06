@@ -1,23 +1,16 @@
 import React from 'react';
 import {
-  SafeAreaView,
   ScrollView,
   StyleSheet,
-  useColorScheme,
-  View,
 } from 'react-native';
-import ListView from './src/screens/screen';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+
+import TabsRender from './src/screens/tabs';
 
 const App = () => {
-
-
   return (
-    <SafeAreaView>
       <ScrollView>
-        <ListView />
+        <TabsRender/>
       </ScrollView>
-    </SafeAreaView>
   );
 };
 
